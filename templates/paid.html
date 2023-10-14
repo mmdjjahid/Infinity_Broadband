@@ -1,0 +1,184 @@
+{% include "header.html" %} {% include "nav.html" %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Edit User</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Edit User</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- /.card -->
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h1>Edit User</h1>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+    
+
+    
+    <form action="{{ url_for('edit_ppp', ppp_id=ppp.get('name')) }}" method="POST">
+        
+        
+    <div id="accordion">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h4 class="card-title w-100">
+              <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
+                Edit User
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="collapse show" data-parent="#accordion">
+            <div class="card-body">
+                <form action="{{ url_for('add_ppp') }}" method="POST">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input class="form-control" type="text" id="name" name="name" value="{{ ppp.get('name') }}" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="name">Password:</label>
+                                <input class="form-control" type="text" id="password" name="password" value="{{ ppp.get('password') }}" />
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="name">Packge:</label>
+
+                                <select class="form-control" name="profile" id="profile" value="{{ ppp.get('profile') }}">
+                                    {% for item in s %}
+                                    <option>{{ item[0] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="name">Bill</label>
+                                <input class="form-control" type="text" id="bill" name="bill" />
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="name">Charge</label>
+                                <input class="form-control" type="text" id="charge" name="charge" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label for="name">Address:</label>
+                                    <input class="form-control" type="text" id="address" name="address" />
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label for="name">E-mail:</label>
+                                    <input class="form-control" type="text" id="email" name="email" />
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-10">
+                                    <div class="form-group">
+                                        <label for="name">Description:</label>
+                                        <input class="form-control" type="text" id="description" name="description" />
+                                    </div>
+                                </div>
+                            </div>
+                                    
+
+                    <div class="col-2">
+                        <div class="form-group">
+                            
+                            <button class="btn btn-primary" type="submit">UPDATE</button>
+                        </div>
+                    </div>
+                </form>
+                
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+
+
+
+
+
+
+    </form>
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+    {% include "footer.html" %}
+

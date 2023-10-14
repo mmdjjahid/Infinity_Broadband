@@ -1,0 +1,196 @@
+{% include "header.html" %} {% include "nav.html" %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Mikrotik Secret</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Mikrotik Secret</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- /.card -->
+
+                    <div class="card">
+                        <div class="card-header">
+
+
+
+                            <!--
+                            <div id="accordion">
+                                <div class="card card-primary">
+                                  <div class="card-header">
+                                    <h4 class="card-title w-100">
+                                      <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
+                                        Add New User
+                                      </a>
+                                    </h4>
+                                  </div>
+                                  <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <form action="{{ url_for('add_ppp') }}" method="POST">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="name">Name:</label>
+                                                        <input class="form-control" type="text" id="name" name="name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="name">Password:</label>
+                                                        <input class="form-control" type="text" id="password" name="password" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class="row">
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="name">Packge:</label>
+            
+                                                        <select class="form-control" name="profile" id="profile">
+                                                            {% for item in s %}
+                                                            <option>{{ item[0] }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="name">Bill</label>
+                                                        <input class="form-control" type="text" id="bill" name="bill" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="form-group">
+                                                        <label for="name">Charge</label>
+                                                        <input class="form-control" type="text" id="charge" name="charge" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-10">
+                                                        <div class="form-group">
+                                                            <label for="name">Address:</label>
+                                                            <input class="form-control" type="text" id="address" name="address" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <div class="row">
+                                                    <div class="col-10">
+                                                        <div class="form-group">
+                                                            <label for="name">E-mail:</label>
+                                                            <input class="form-control" type="text" id="email" name="email" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <div class="form-group">
+                                                                <label for="name">Description:</label>
+                                                                <input class="form-control" type="text" id="description" name="description" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                            
+            
+                                            <div class="col-2">
+                                                <div class="form-group">
+                                                    
+                                                    <button class="btn btn-primary" type="submit">ADD</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                              </div>
+
+
+                            -->
+
+
+                            
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body" >
+                            <table id="example1" class="table table-bordered table-striped table-head-fixed table-hover">
+                                <div class="row"></div>
+
+                                <thead>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>Password</th>
+                                        <th>Packge</th>
+                                        <th>MAC</th>
+                                        <th>Last Disconnect Time</th>
+                                        <th>Status</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ppp in ppps %}{% if "am_" in ppp.get('name') %}
+        <tr>
+            
+            <td>{{ppp.get('name')}}</td>
+            <td>{{ppp.get('password')}}</td>
+            <td>{{ppp.get('profile')}}</td>
+            <td>{{ppp.get('last-caller-id')}}</td>
+            <td>{{ppp.get('last-logged-out')}}</td>
+            {% if ppp.get('disabled') == "false" %}
+            <td style="color: MediumSeaGreen;font-size: 15px;font-weight: bold;">{{"Enable"}}</td>
+            {% elif ppp.get('disabled') == "true" %}
+            <td style="color: Tomato;font-size: 15px;font-weight: bold;">{{"Disable"}}</td>
+            {% endif %}
+            
+        </tr>
+        {% endif %}
+        {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>Password</th>
+                                        <th>Packge</th>
+                                        <th>MAC</th>
+                                        <th>Last Disconnect Time</th>
+                                        <th>Status</th>
+                                        
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+<!-- /.content-wrapper -->
+{% include "footer.html" %}

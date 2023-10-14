@@ -1,0 +1,80 @@
+{% include "header.html" %} {% include "nav.html" %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Active</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Active</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- /.card -->
+
+                    <div class="card">
+                        <div class="card-header">
+                            
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped table-head-fixed table-hover">
+                                <div class="row"></div>
+
+                                <thead>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>IP address</th>
+                                        <th>Uptime</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in q %} {% if "am_" in i.get('name') %}
+                                    <!-- table rows -->
+                                    <tr>
+                                        <td>{{i.get('name')}}</td>
+                                        <td>{{i.get('address')}}</td>
+                                        <td>{{i.get('uptime')}}</td>
+                                        
+                                    </tr>
+                                    {% endif %}
+                                     {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>IP address</th>
+                                        <th>Uptime</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+{% include "footer.html" %}

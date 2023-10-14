@@ -1,0 +1,61 @@
+<table id="example1" class="table table-bordered table-striped table-head-fixed table-hover">
+    <div class="row"></div>
+
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Packge</th>
+            <th>MAC</th>
+            <th>Last Disconnect Time</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ppp in ppps %}
+        <tr>
+            
+            <td>{{ppp.get('name')}}</td>
+            <td>{{ppp.get('password')}}</td>
+            <td>{{ppp.get('profile')}}</td>
+            <td>{{ppp.get('last-caller-id')}}</td>
+            <td>{{ppp.get('last-logged-out')}}</td>
+            {% if ppp.get('disabled') == "false" %}
+            <td style="background-color: MediumSeaGreen;">{{"Enable"}}</td>
+            {% elif ppp.get('disabled') == "true" %}
+            <td style="background-color: Tomato;">{{"Disable"}}</td>
+            {% endif %}
+            <td>
+                <a href="{{ url_for('edit_ppp', ppp_id=ppp.get('name')) }}" style="background-color: Black;" class="btn btn-primary">Edit</a>
+                <form action="{{ url_for('delete_ppp', ppp_id=ppp.get('name')) }}" method="POST">
+                    <input type="submit" style="background-color: Red;" value="Delete" class="btn btn-primary">
+                </form>
+                {% if ppp.get('disabled') == "false" %}
+                <form action="{{ url_for('disable_ppp', ppp_id=ppp.get('name')) }}" method="POST" >
+                    <input type="submit" style="background-color: Tomato;" value="Disable" class="btn btn-primary">
+                </form>
+                {% elif ppp.get('disabled') == "true" %}
+                <form action="{{ url_for('enable_ppp', ppp_id=ppp.get('name')) }}" method="POST">
+                    <input type="submit" style="background-color: MediumSeaGreen;" value="Enable" class="btn btn-primary">
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <tr>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Packge</th>
+                <th>MAC</th>
+                <th>Last Disconnect Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </tr>
+    </tfoot>
+</table>
