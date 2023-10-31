@@ -6,7 +6,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # MikroTik API configuration
-API_HOST = '103.123.171.108'
+API_HOST = '103.93.34.126'
 API_USERNAME = 'sof'
 API_PASSWORD = 'sof123'
 API_PORT = 1122
